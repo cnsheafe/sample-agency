@@ -1,0 +1,28 @@
+{
+  "name": "sample-agency",
+  "version": "1.0.0",
+  "description": "An example of typeorm/hapi server ",
+  "main": "index.js",
+  "author": "<cnsheafe@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --exec ts-node -- ./server.ts"
+  },
+  "dependencies": {
+    "@types/hapi": "^17.0.18",
+    "@types/node": "^10.9.2",
+    "@types/pg": "^7.4.10",
+    "hapi": "^17.5.3",
+    "pg": "^7.4.3",
+    "reflect-metadata": "^0.1.12",
+    "tslint": "^5.11.0",
+    "typeorm": "^0.2.7",
+    "typescript": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.1",
+    "tslint-config-prettier": "^1.15.0"
+  }
+}
