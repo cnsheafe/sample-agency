@@ -1,8 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Column } from 'typeorm'
+import { Entity, Column } from 'typeorm'
+import Base from './__Base';
+import { ICreateOneProjectPayload as IPayload } from '../routes/projects/project.interface';
 
 @Entity()
-export default class Project {
-  constructor (fields) {
+export default class Project extends Base {
+  constructor (fields: IPayload) {
+    super()
     if (fields) {
       const { name, description, budget } = fields
       this.name = name
@@ -10,15 +13,6 @@ export default class Project {
       this.budget = budget
     }
   }
-
-  @PrimaryGeneratedColumn()
-  private id: number
-
-  @CreateDateColumn({ type: 'timestamptz' })
-  private createdAt: string
-
-  @CreateDateColumn({type: 'timestamptz' })
-  private updatedAt: string
 
   @Column({ length: 100 })
   name: string
