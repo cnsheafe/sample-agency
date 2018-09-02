@@ -1,18 +1,24 @@
-import { Entity, Column } from 'typeorm'
+import { Entity, Column, OneToMany } from 'typeorm'
 import Base from './__Base';
-import { ICreateOneProjectPayload as IPayload } from '../routes/projects/project.interface';
+import { IProject } from '../routes/projects/project.interface'
+import Employee from './Employee'
 
 @Entity()
 export default class Project extends Base {
-  constructor (fields: IPayload) {
+  constructor (project: IProject) {
     super()
-    if (fields) {
-      const { name, description, budget } = fields
+    if (project) {
+      const { name, description, budget, startDate, endDate } = project 
       this.name = name
       this.description = description
       this.budget = budget
+      this.startDate = startDate
+      this.endDate = endDate
     }
   }
+
+  @OneToMany(type => Employee, employee => employee.project)
+  employees: Employee[]
 
   @Column({ length: 100 })
   name: string

@@ -4,13 +4,27 @@ import hello from "./routes/hello/hello.index";
 import { createConnection } from "typeorm";
 import Project from "./entity/Project";
 import projects from "./routes/projects/project.index";
-import { createOne } from './db'
+import {
+  createOne,
+  getOne,
+  updateOne,
+  bindModelOneToMany,
+} from './db'
+import Employee from "./entity/Employee";
+import employees from "./routes/employees/employee.index";
 
 async function configServer(server: Server) {
-  server.bind({ createOne })
+  // Bind database handlers to the server context
+  server.bind({
+    createOne,
+    getOne,
+    updateOne,
+    bindModelOneToMany
+  })
 
   server.route(hello)
   server.route(projects)
+  server.route(employees)
 
 
   await createConnection({
@@ -20,7 +34,7 @@ async function configServer(server: Server) {
     username: 'sample-agency',
     password: 'password',
     database: 'sample-agency',
-    entities: [Project],
+    entities: [Project, Employee],
     synchronize: true,
     logging: false,
   })
