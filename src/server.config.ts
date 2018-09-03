@@ -1,31 +1,23 @@
-import { Server } from "hapi";
+import { Server } from 'hapi'
 import 'reflect-metadata'
-import hello from "./routes/hello/hello.index";
-import { createConnection } from "typeorm";
-import Project from "./entity/Project";
-import projects from "./routes/projects/project.index";
-import {
-  createOne,
-  getOne,
-  updateOne,
-  bindModelOneToMany,
-} from './db'
-import Employee from "./entity/Employee";
-import employees from "./routes/employees/employee.index";
+import { createConnection } from 'typeorm'
+import Project from './entity/Project'
+import projects from './routes/projects/project.index'
+import { createOne, getOne, updateOne, bindModelOneToMany } from './db'
+import Employee from './entity/Employee'
+import employees from './routes/employees/employee.index'
 
-async function configServer(server: Server) {
+async function configServer (server: Server) {
   // Bind database handlers to the server context
   server.bind({
     createOne,
     getOne,
     updateOne,
-    bindModelOneToMany
+    bindModelOneToMany,
   })
 
-  server.route(hello)
   server.route(projects)
   server.route(employees)
-
 
   await createConnection({
     type: 'postgres',

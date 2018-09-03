@@ -1,4 +1,4 @@
-import { IEmployee } from "../employees/employee.interface";
+import { IEmployee } from '../employees/employee.interface'
 
 export interface IProject {
   name: string

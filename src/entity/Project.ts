@@ -1,5 +1,5 @@
 import { Entity, Column, OneToMany } from 'typeorm'
-import Base from './__Base';
+import Base from './__Base'
 import { IProject } from '../routes/projects/project.interface'
 import Employee from './Employee'
 
@@ -8,7 +8,7 @@ export default class Project extends Base {
   constructor (project: IProject) {
     super()
     if (project) {
-      const { name, description, budget, startDate, endDate } = project 
+      const { name, description, budget, startDate, endDate } = project
       this.name = name
       this.description = description
       this.budget = budget
@@ -17,7 +17,7 @@ export default class Project extends Base {
     }
   }
 
-  @OneToMany(type => Employee, employee => employee.project)
+  @OneToMany((type) => Employee, (employee) => employee.project)
   employees: Employee[]
 
   @Column({ length: 100 })
@@ -37,7 +37,7 @@ export default class Project extends Base {
 
   @Column({
     type: 'date',
-    nullable: true
+    nullable: true,
   })
   endDate?: string
 }

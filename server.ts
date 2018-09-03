@@ -1,5 +1,5 @@
-import { Server } from "hapi";
-import configServer from "./src/server.config";
+import { Server } from 'hapi'
+import configServer from './src/server.config'
 
 async function startup(host, port) {
   const server = new Server({ host, port })

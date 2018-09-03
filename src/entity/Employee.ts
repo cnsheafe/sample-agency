@@ -1,11 +1,11 @@
-import Base from "./__Base";
-import { Entity, Column, OneToMany, ManyToOne } from "typeorm";
-import Project from "./Project";
-import { IEmployee } from "../routes/employees/employee.interface";
+import Base from './__Base'
+import { Entity, Column, ManyToOne } from 'typeorm'
+import Project from './Project'
+import { IEmployee } from '../routes/employees/employee.interface'
 
 @Entity()
 export default class Employee extends Base {
-  constructor(employee: IEmployee) {
+  constructor (employee: IEmployee) {
     super()
     if (employee) {
       const {
@@ -21,7 +21,7 @@ export default class Employee extends Base {
     }
   }
 
-  @ManyToOne(type => Project, project => project.employees)
+  @ManyToOne((type) => Project, (project) => project.employees)
   project: Project
 
   @Column({ length: 100 })

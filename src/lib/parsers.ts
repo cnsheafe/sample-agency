@@ -1,10 +1,9 @@
-export function parseUndefinedPayload(props) {
-  return Object.entries(props)
-    .reduce((acc, [key, value]) => {
-      if (!value) return acc
+export function parseUndefinedPayload (props) {
+  return Object.entries(props).reduce((acc, [key, value]) => {
+    if (!value) return acc
 
-      return { ...acc, [key]: value }
-    }, {})
+    return { ...acc, [key]: value }
+  }, {})
 }
 
 /**
@@ -12,11 +11,11 @@ export function parseUndefinedPayload(props) {
  * @param query Hapi Request.query object
  * @param filter An object with mapping relation:bool
  */
-export function parseRelationsFromQuery(query, filter) {
+export function parseRelationsFromQuery (query, filter) {
   const { relations } = query
   if (!relations) return undefined
 
   const rel = [].concat(relations)
 
-  return rel.filter(relation => filter[relation])
+  return rel.filter((relation) => filter[relation])
 }

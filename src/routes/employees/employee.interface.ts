@@ -1,4 +1,4 @@
-import Project from "../../entity/Project";
+import Project from '../../entity/Project'
 
 export interface IEmployee {
   firstname: string
